@@ -12,14 +12,16 @@ void loop(){
   Serial.println("4: Write single");
   Serial.println("5: Erase all");
   
+  Serial.flush(); 
   do{}while(!(Serial.available()));
   c=Serial.read();
   Serial.flush();
+  Serial.println("");
   
   switch (c){
-    case 1: Serial.println("Which address?");
+    case '1': Serial.println("Which address?");
             do{}while(!(Serial.available()));
-            c=Serial.read();
+            c=Serial.parseInt();
             Serial.println(EEPROM.read(c));
             break;
   }
