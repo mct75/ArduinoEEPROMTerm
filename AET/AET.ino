@@ -39,6 +39,16 @@ void loop(){
                 }
                 Serial << endl << endl;
               break;
+    case '3': Serial << "Enter the address to write to: ";
+              do{}while(!(Serial.available()));
+              c=Serial.parseInt();
+              Serial << _DEC(c) << endl << "Enter the byte to write to this address: ";
+              do{}while(!(Serial.available()));
+              d=Serial.parseInt();
+              EEPROM.write(c,d);
+              Serial << "Address " << _DEC(c) << " is now " << EEPROM.read(c) << endl << endl << endl;
+              break;
+              
   }
 }
     
