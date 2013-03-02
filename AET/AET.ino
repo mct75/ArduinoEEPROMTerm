@@ -6,6 +6,8 @@ int d;
 
 void setup(){
 Serial.begin(9600);  
+Serial << "Simple EEPROM management tool" << endl << "EEPROM is " << _DEC(E2END+1) << " bytes on your board." << endl 
+<< "Therefore, valid addresses are 0 to " << E2END << "." << endl << "Valid data for a single byte is 0 to 255." << endl << endl;
 }
 
 void loop(){
@@ -48,7 +50,7 @@ void loop(){
               EEPROM.write(c,d);
               Serial << "Address " << _DEC(c) << " is now " << EEPROM.read(c) << endl << endl << endl;
               break;
-              
+    case '4': Serial << "Are you sure you want to reinit the whole flash";
   }
 }
     
