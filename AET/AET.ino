@@ -3,6 +3,7 @@
 
 int c;
 int d;
+int e;
 
 void setup(){
   Serial.begin(9600);  
@@ -31,7 +32,9 @@ void loop(){
     }
     while(!(Serial.available()));
     c=Serial.parseInt();
-    Serial << "Address " << _DEC(c) << " is " << EEPROM.read(c) << endl << endl << endl;
+    d=EEPROM.read(c);
+    Serial << "Address " << _DEC(c) << " | " << _DEC(d) << " | 0b" << _BIN(d) 
+    << " | 0x" << _HEX(d) << " | ASCII " << _BYTE(d) << endl << endl << endl;
     break;
 
   case '2': 
@@ -47,7 +50,9 @@ void loop(){
     d=Serial.parseInt();
     Serial << _DEC(d) << endl;
     for(int i = c; i<=d; i++){
-      Serial << "Address " << _DEC(i) << " is " << EEPROM.read(i) << endl;
+      e=EEPROM.read(i);
+      Serial << "Address " << _DEC(i) << " | " << _DEC(e) << " | 0b" << _BIN(e) 
+      << " | 0x" << _HEX(e) << " | ASCII " << _BYTE(e) << endl;
     }
     Serial << endl << endl;
     break;
@@ -64,7 +69,9 @@ void loop(){
     while(!(Serial.available()));
     d=Serial.parseInt();
     EEPROM.write(c,d);
-    Serial << "Address " << _DEC(c) << " is now " << EEPROM.read(c) << endl << endl << endl;
+    d=EEPROM.read(c);
+    Serial << "Address " << _DEC(c) << " is now " << _DEC(c) << " | " << _DEC(d) << " | 0b" << _BIN(d) 
+    << " | 0x" << _HEX(d) << " | ASCII " << _BYTE(d) << endl << endl << endl;
     break;
 
   case '4': 
